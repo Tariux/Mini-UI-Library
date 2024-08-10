@@ -1,4 +1,5 @@
 import { _APP } from "../../app";
+import ReactDOM from 'react-dom';
 
 class BaseRouter {
     constructor() {
@@ -50,7 +51,15 @@ class BaseRouter {
         console.log(`currentRoute to route: ${this.currentRoute}`);
         if (this.currentRoute && this.currentRoute.module && typeof this.currentRoute.module === 'object') {
             if (typeof this.currentRoute.module.render === 'function') {
-                this.appElement.innerHTML = this.currentRoute.module.render() || "";
+                const response = this.currentRoute.module.render()
+                console.log('RESPONSE:::' , response);
+                // this.appElement.innerHTML = response || "";
+
+                if (!this.root) {
+                    this.root = ReactDOM.createRoot(this.appElement);
+                }
+                this.root.render(response);
+
 
             } else {
                 console.log(`Render For Route Module ${route} Failed`);

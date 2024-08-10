@@ -1,5 +1,5 @@
-import { DashboardPage } from "./interactors/DashboardPage";
-import { HomePage } from "./interactors/HomePage";
+import { DashboardPage } from "./interactors/DashboardPage/index.jsx";
+import { HomePage } from "./interactors/HomePage/index.jsx";
 
 export const _APP =  {
     interactors: {

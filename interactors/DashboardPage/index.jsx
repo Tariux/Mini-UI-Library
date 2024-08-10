@@ -1,8 +1,9 @@
+import React from 'react';
+
 class DashboardInteractor {
 
     render() {
-        const  x =  `<h1>Welcome to Dashboard Page :></h1>`
-        return x
+        return (<div><h1>This is Dashboard</h1></div>)
     }
 }
 export const DashboardPage = new DashboardInteractor();
