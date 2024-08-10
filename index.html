@@ -1,52 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Discover Flow | V 3.0.0</title>
+    <link rel="stylesheet" href="./public/css/windows-ui.min.css" />
+    <link rel="stylesheet" href="./public/css/app-config.css" />
+
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-        }
-        body {
-            background: linear-gradient(to right, #ff416c, #ff4b2b);
-            height: 100vh;
-        }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+      }
 
-        #app-container {
-            width: 375px;
-            height: 100vh;
-            display: block;
-            margin: 0 auto;
-            display: flex;
-            justify-content: center;
-            /* align-items: center; */
+      body {
+        background: linear-gradient(15deg, #d33f34 50%, #a61322 50.1%);
+        height: 100vh;
+        overflow: hidden;
+        padding: 0;
 
-            /* border: 2px dashed skyblue; */
+      }
 
-        }
-        #app-layout {
-            background-color: white;
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.06);
-            border-radius: 0 0 10px 10px;
-            width: 90%;
-            height: 95%;
-            padding: 20px;
-        }
+      #app-container {
+        width: 100%;
+        height: 100vh;
+        display: block;
+        margin: 0 auto;
+        display: flex;
+        z-index: 999;
+        position: relative;
+        justify-content: center;
+        align-items: center;
+        padding: 0;
+        /* border: 2px dashed skyblue; */
+      }
+      #app-layout {
+        box-shadow: 0 2px 20px rgba(0, 0, 0, 0.06);
+        width: 90%;
+        height: 90%;
+      }
+      aside.app-navbar-wrap {
+        height: 100% !important;
+      }
+      .container-flex-row {
+        height: 100%;
+        width: 100%;
+      }
+
     </style>
-</head>
-<body>
+  </head>
+  <body class="dark-theme">
     <div id="app-container">
-        <div id="app-layout">
-            <div id="app">
-
+      <div id="app-layout">
+        <div class="container-flex-row">
+          <aside class="app-navbar-wrap" id="NavBarMain" style="">
+            <div class="app-navbar-header-mobile">
+              <span
+                class="app-navbar-toggler"
+                data-win-toggle="navbar-left"
+                data-win-target="#NavBarMain"
+              ></span>
+              <div
+                style="display: flex; justify-content: space-between; flex: 1"
+              >
+                <span class="app-navbar-name">Discover Flow</span>
+                <span class="app-navbar-name">Home</span>
+              </div>
             </div>
+            <nav class="app-navbar" style="">
+              <div class="app-navbar-header">
+                <span
+                  class="app-navbar-toggler"
+                  data-win-toggle="navbar-left"
+                  data-win-target="#NavBarMain"
+                  aria-controls="NavBarMain"
+                  aria-label="Toggle navigation"
+                ></span>
+                <span class="app-navbar-name">Discover Flow</span>
+              </div>
+              <ul class="app-navbar-list" id="app-navbar-list">
+                <div class="app-navbar-submenu">
+                  <div class="app-navbar-submenu-content" id="NavSubMenu">
+                    <!-- <li class="app-navbar-list-item">
+                      <a exact="false" class="" href="./navbar.html">
+                        <i class="icons10-map"></i>
+                        <span>NavBar</span>
+                      </a>
+                    </li>
+                    <li class="app-navbar-list-item">
+                      <a exact="false" class="" href="./navbarLink.html">
+                        <i class="icons10-link"></i>
+                        <span>NavBarLink</span>
+                      </a>
+                    </li>
+                    <li class="app-navbar-list-item">
+                      <a exact="false" class="" href="./navbarSubmenu.html">
+                        <i class="icons10-angle-down"></i>
+                        <span>NavBarSubMenu</span>
+                      </a>
+                    </li>
+                    <li class="app-navbar-list-item">
+                      <a exact="false" class="" href="./navpagecontainer.html">
+                        <i class="icons10-columns"></i>
+                        <span>PageContainer</span>
+                      </a>
+                    </li> -->
+                  </div>
+                </div>
+                <div>
+                  <h1>P A G E S</h1>
+                  <div class="app-hr"></div>
+                </div>
+                <li class="app-navbar-list-item">
+                  <a href="./" class="undefined">
+                    <i class="icons10-sun"></i>
+                    <span>Home</span>
+                  </a>
+                </li>
+                <li class="app-navbar-list-item">
+                    <a href="./dashboard" class="undefined">
+                      <i class="icons10-sun"></i>
+                      <span>Dashboard</span>
+                    </a>
+                  </li>
+              </ul>
+            </nav>
+          </aside>
+          <main class="app-page-container has-padding">
+            <div id="app"></div>
+          </main>
         </div>
+      </div>
     </div>
-    <a href="./dashboard">Dashboard</a>
-    <a href="./">Home</a>
-
-</body>
-<script type="module" src="./index.js"></script>
+  </body>
+  <script type="module" src="./index.js"></script>
+  <script type="module" src="./public//javascript/windows-ui.min.js"></script>
 </html>
