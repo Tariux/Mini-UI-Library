@@ -2,14 +2,13 @@ import { _APP } from './app';
 import { router } from './core/router/BaseRouter';
 
 class MiniUI {
-    constructor() {
-        this.init()
-        this.events()
+  constructor() {
+console.log('xxxx222');
 
-    }
+    this.init();
+  }
   init() {
     router.autoRoute();
-
   }
   events() {
     function changeUrl(newUrl) {
@@ -17,6 +16,7 @@ class MiniUI {
     }
     function preventLinksEvent() {
       document.addEventListener('click', function (event) {
+        console.log('MEOW');
         const targetElement = event.target;
 
         if (targetElement.href && targetElement.href !== '') {
@@ -26,9 +26,8 @@ class MiniUI {
         }
       });
     }
-    preventLinksEvent()
+    preventLinksEvent();
   }
 }
-
-
-new MiniUI()
+console.log('xxxx');
+new MiniUI();
