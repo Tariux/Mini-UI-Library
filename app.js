@@ -1,15 +1,20 @@
 import { DashboardPage } from "./interactors/DashboardPage/index.jsx";
 import { HomePage } from "./interactors/HomePage/index.jsx";
+import { SamplePackage } from "./modules/SamplePackage/index.js";
+import { UserProfile } from "./modules/UserProfileModule/index.js";
 
 export const _APP =  {
     interactors: {
         home : {
             route: '/',
-            module: HomePage
+            interactor: HomePage,
+            share: SamplePackage
+
         }, 
         dashboard : {
             route: '/dashboard',
-            module: DashboardPage
+            interactor: DashboardPage,
+            share: [UserProfile , SamplePackage]
         }
     },
     config: {

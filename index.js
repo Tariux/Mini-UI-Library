@@ -1,27 +1,34 @@
 import { _APP } from './app';
-// import { loader } from './core/loader/BaseLoader';
 import { router } from './core/router/BaseRouter';
 
-// Add routes
-router.add('home', '/home');
-router.add('about', '/about');
-router.add('contact', '/contact');
-// loader.loadModules('./interactors/')
-router.autoRoute()
+class MiniUI {
+    constructor() {
+        this.init()
+        this.events()
 
-document.addEventListener('click', function(event) {
-
-    const targetElement = event.target;
-
-    if (targetElement.href && targetElement.href !== '') {
-        changeUrl(targetElement.href);
-        router.autoRoute();
-        event.preventDefault();
     }
+  init() {
+    router.autoRoute();
 
-});
-function changeUrl(newUrl) {
-    window.history.pushState({ path: newUrl }, '', newUrl);
+  }
+  events() {
+    function changeUrl(newUrl) {
+      window.history.pushState({ path: newUrl }, '', newUrl);
+    }
+    function preventLinksEvent() {
+      document.addEventListener('click', function (event) {
+        const targetElement = event.target;
+
+        if (targetElement.href && targetElement.href !== '') {
+          changeUrl(targetElement.href);
+          router.autoRoute();
+          event.preventDefault();
+        }
+      });
+    }
+    preventLinksEvent()
+  }
 }
 
-// Example: change the URL to /about
+
+new MiniUI()

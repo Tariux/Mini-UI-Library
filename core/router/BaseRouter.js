@@ -1,5 +1,5 @@
 import { _APP } from "../../app";
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
 
 class BaseRouter {
     constructor() {
@@ -48,12 +48,31 @@ class BaseRouter {
         console.log(`hash to route: ${this.hash}`);
         console.log(`hostname to route: ${this.hostname}`);
         console.log(`fullURL to route: ${this.fullURL}`);
-        console.log(`currentRoute to route: ${this.currentRoute}`);
-        if (this.currentRoute && this.currentRoute.module && typeof this.currentRoute.module === 'object') {
-            if (typeof this.currentRoute.module.render === 'function') {
-                const response = this.currentRoute.module.render()
-                console.log('RESPONSE:::' , response);
-                // this.appElement.innerHTML = response || "";
+        console.log(`currentRoute to route: ` , this.currentRoute);
+
+        let interactor = this.currentRoute?.interactor || false
+        if (interactor) {
+
+            const shares = []
+            if (this.currentRoute.share) {
+                console.log('this.currentRoute.share' , typeof this.currentRoute.share);
+                if (typeof this.currentRoute.share === 'object') {
+
+                    (this.currentRoute.share).forEach(module => {
+                        let moduleObject = new module()
+                        shares[moduleObject.constructor.name] = moduleObject
+                    });
+                } else if (typeof this.currentRoute.share === 'function') {
+                    let moduleName = this.currentRoute.share
+                    let moduleObject = new moduleName()
+                    shares[moduleObject.constructor.name] = moduleObject
+
+                }
+            }
+
+            interactor = new interactor(shares || [])
+            if (typeof interactor.render === 'function') {
+                const response = interactor.render()
 
                 if (!this.root) {
                     this.root = ReactDOM.createRoot(this.appElement);
