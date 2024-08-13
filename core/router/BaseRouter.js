@@ -1,6 +1,5 @@
-import { _APP } from "../../app";
-import ReactDOM from 'react-dom/client';
-
+const _APP = require("../../app")
+const ReactDOM = require('react-dom/client')
 class BaseRouter {
     constructor() {
         this.routes = {};

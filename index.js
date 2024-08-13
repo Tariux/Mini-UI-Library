@@ -1,33 +1,14 @@
-import { _APP } from './app';
-import { router } from './core/router/BaseRouter';
-
-class MiniUI {
-  constructor() {
-console.log('xxxx222');
-
-    this.init();
-  }
-  init() {
-    router.autoRoute();
-  }
-  events() {
-    function changeUrl(newUrl) {
-      window.history.pushState({ path: newUrl }, '', newUrl);
-    }
-    function preventLinksEvent() {
-      document.addEventListener('click', function (event) {
-        console.log('MEOW');
-        const targetElement = event.target;
-
-        if (targetElement.href && targetElement.href !== '') {
-          changeUrl(targetElement.href);
-          router.autoRoute();
-          event.preventDefault();
-        }
-      });
-    }
-    preventLinksEvent();
-  }
+function changeUrl(newUrl) {
+  window.history.pushState({ path: newUrl }, '', newUrl);
 }
-console.log('xxxx');
-new MiniUI();
+function preventLinksEvent() {
+  document.addEventListener('click', function (event) {
+    const targetElement = event.target;
+
+    if (targetElement.tagName === 'A') {
+      event.preventDefault();
+      changeUrl(targetElement.href);
+    }
+  });
+}
+preventLinksEvent();
